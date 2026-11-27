@@ -1,0 +1,1508 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SparkUGC™ — AI UGC Ads & Creative Agency</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,600;0,700;0,800;1,700;1,800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Plus Jakarta Sans', 'sans-serif'],
+          },
+          colors: {
+            obsidian: '#05040A',
+            void: '#0C0A15',
+            electricPurple: '#8B2CF5',
+            neonMagenta: '#E838F5',
+          },
+          boxShadow: {
+            'neon': '0 0 24px rgba(139, 44, 245, 0.45), 0 0 48px rgba(232, 56, 245, 0.22)',
+            'neon-strong': '0 0 36px rgba(232, 56, 245, 0.65), 0 0 72px rgba(139, 44, 245, 0.35)',
+            'card-glow': '0 0 0 1px rgba(139, 44, 245, 0.28), 0 20px 40px -15px rgba(0, 0, 0, 0.85)',
+          },
+          animation: {
+            'float': 'float 6s ease-in-out infinite',
+            'sparkle': 'sparkle 4s ease-in-out infinite',
+            'eq-1': 'eqBar 0.7s ease-in-out infinite alternate',
+            'eq-2': 'eqBar 0.5s ease-in-out infinite alternate',
+            'eq-3': 'eqBar 0.85s ease-in-out infinite alternate',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-8px)' },
+            },
+            sparkle: {
+              '0%, 100%': { opacity: '0.45', transform: 'scale(0.85) rotate(0deg)' },
+              '50%': { opacity: '1', transform: 'scale(1.15) rotate(12deg)' },
+            },
+            eqBar: {
+              '0%': { height: '4px' },
+              '100%': { height: '16px' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #05040A;
+      color: #F8FAFC;
+      overflow-x: hidden;
+    }
+
+    .metallic-text {
+      background: linear-gradient(180deg, #FFFFFF 0%, #E2E8F0 52%, #94A3B8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .ugc-gradient-text {
+      background: linear-gradient(135deg, #8B2CF5 0%, #E838F5 55%, #EC4899 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .neon-pill-border {
+      background: rgba(12, 10, 21, 0.92);
+      border: 1px solid rgba(232, 56, 245, 0.6);
+      box-shadow: 0 0 24px rgba(139, 44, 245, 0.38), inset 0 0 14px rgba(232, 56, 245, 0.2);
+    }
+
+    .glass-panel {
+      background: linear-gradient(145deg, rgba(18, 15, 32, 0.9) 0%, rgba(12, 10, 21, 0.95) 100%);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(139, 44, 245, 0.28);
+    }
+
+    .glass-panel:hover {
+      border-color: rgba(232, 56, 245, 0.6);
+    }
+
+    .hero-radial-bg {
+      background:
+        radial-gradient(circle at 78% 22%, rgba(232, 56, 245, 0.24) 0%, transparent 45%),
+        radial-gradient(circle at 18% 35%, rgba(139, 44, 245, 0.24) 0%, transparent 50%),
+        radial-gradient(circle at 50% 85%, rgba(236, 72, 153, 0.12) 0%, transparent 55%);
+    }
+
+    .grid-pattern {
+      background-size: 48px 48px;
+      background-image:
+        linear-gradient(to right, rgba(139, 44, 245, 0.06) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(139, 44, 245, 0.06) 1px, transparent 1px);
+    }
+
+    @keyframes panGradient {
+      0% { transform: scale(1) translate(0px, 0px); }
+      50% { transform: scale(1.06) translate(-4px, -6px); }
+      100% { transform: scale(1) translate(0px, 0px); }
+    }
+
+    .video-sim-motion {
+      animation: panGradient 7s ease-in-out infinite;
+    }
+
+    .video-sim-paused {
+      animation-play-state: paused !important;
+    }
+
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #05040A;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, #8B2CF5, #E838F5);
+      border-radius: 9999px;
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-fuchsia-500 selection:text-white">
+
+  <!-- Ambient Grid Overlay -->
+  <div class="fixed inset-0 pointer-events-none z-0 grid-pattern opacity-75"></div>
+
+  <!-- ==================== 1. STICKY TOP NAVIGATION ==================== -->
+  <header class="sticky top-0 z-50 border-b border-purple-500/25 bg-[#05040A]/85 backdrop-blur-xl">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+
+        <!-- Custom Inline SVG SparkUGC™ Logo Emblem -->
+        <a href="#" class="flex items-center gap-3 group focus:outline-none">
+          <div class="relative w-12 h-12 flex items-center justify-center shrink-0">
+            <svg viewBox="0 0 120 120" class="w-12 h-12 drop-shadow-[0_0_12px_rgba(232,56,245,0.75)] transition-transform duration-300 group-hover:scale-105" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="navRingGrad" x1="10" y1="10" x2="110" y2="110" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="#E2E8F0"/>
+                  <stop offset="35%" stop-color="#E838F5"/>
+                  <stop offset="70%" stop-color="#8B2CF5"/>
+                  <stop offset="100%" stop-color="#EC4899"/>
+                </linearGradient>
+                <linearGradient id="navSilver" x1="25" y1="20" x2="85" y2="95" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="#FFFFFF"/>
+                  <stop offset="55%" stop-color="#E2E8F0"/>
+                  <stop offset="100%" stop-color="#94A3B8"/>
+                </linearGradient>
+                <linearGradient id="navPurple" x1="30" y1="30" x2="95" y2="90" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="#8B2CF5"/>
+                  <stop offset="55%" stop-color="#E838F5"/>
+                  <stop offset="100%" stop-color="#9333EA"/>
+                </linearGradient>
+                <linearGradient id="navSwoosh" x1="15" y1="80" x2="105" y2="30" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="#8B2CF5"/>
+                  <stop offset="50%" stop-color="#E838F5"/>
+                  <stop offset="100%" stop-color="#FFFFFF"/>
+                </linearGradient>
+              </defs>
+              <circle cx="60" cy="60" r="54" fill="#05040A" stroke="url(#navRingGrad)" stroke-width="3.5"/>
+              <circle cx="60" cy="60" r="49" stroke="rgba(232,56,245,0.35)" stroke-width="1"/>
+              <path d="M84 31C76 26 63 25 50 26C35 28 28 36 30 47C32 56 42 60 53 63L53 52C46 50 42 47 42 43C42 38 49 36 60 36C68 36 74 37 78 39L84 31Z" fill="url(#navSilver)"/>
+              <path d="M68 36C73 36 76 37 78 39L84 31C78 27 71 26 62 26L68 36Z" fill="url(#navPurple)"/>
+              <path d="M35 88C45 93 60 94 74 91C87 88 92 79 89 69C86 60 75 55 62 52L62 63C70 65 75 68 75 73C75 78 67 81 56 81C48 81 42 79 38 77L35 88Z" fill="url(#navSilver)"/>
+              <path d="M35 88L46 73C51 75 56 76 62 76L54 91C46 91 40 90 35 88Z" fill="url(#navPurple)"/>
+              <path d="M54 47L71 58.5L54 70V47Z" fill="url(#navSilver)"/>
+              <path d="M22 72C15 83 34 91 65 78C93 66 108 45 97 36C103 45 88 62 61 73C35 84 21 79 25 69L22 72Z" fill="url(#navSwoosh)"/>
+              <path d="M93 13L95.2 21.8L104 24L95.2 26.2L93 35L90.8 26.2L82 24L90.8 21.8L93 13Z" fill="#FFFFFF"/>
+              <path d="M25 18L26.2 22.8L31 24L26.2 25.2L25 30L23.8 25.2L19 24L23.8 22.8L25 18Z" fill="#E838F5"/>
+            </svg>
+          </div>
+          <div class="flex flex-col">
+            <div class="flex items-start leading-none">
+              <span class="font-display font-extrabold italic text-2xl tracking-tight metallic-text">Spark</span>
+              <span class="font-display font-extrabold italic text-2xl tracking-tight ugc-gradient-text">UGC</span>
+              <span class="text-[10px] font-bold text-slate-300 ml-0.5 mt-0.5">TM</span>
+            </div>
+            <span class="text-[9px] font-bold tracking-[0.2em] text-purple-300/90 uppercase mt-1">AI UGC Ads & Creative Agency</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden md:flex items-center gap-7 text-sm font-semibold text-slate-300">
+          <a href="#showcase" class="hover:text-white transition-colors">Showcase</a>
+          <a href="#creators" class="hover:text-white transition-colors">AI Creators</a>
+          <a href="#script-studio" class="hover:text-white transition-colors">Script Studio</a>
+          <a href="#pricing" class="hover:text-white transition-colors">Pricing</a>
+        </nav>
+
+        <!-- Primary Glowing CTA & Mobile Menu Toggle -->
+        <div class="flex items-center gap-3">
+          <button type="button" onclick="openOrderModal('quick')" class="hidden sm:inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-xs font-extrabold text-white bg-gradient-to-r from-[#8B2CF5] via-[#E838F5] to-pink-600 hover:brightness-110 shadow-neon hover:shadow-neon-strong transition cursor-pointer">
+            <span>Order Now</span>
+            <span>⚡</span>
+          </button>
+
+          <button id="mobile-menu-btn" aria-label="Toggle Menu" class="md:hidden p-2.5 rounded-xl border border-purple-500/35 bg-purple-950/30 text-slate-200 hover:text-white cursor-pointer">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobile-menu" class="hidden md:hidden border-t border-purple-500/25 bg-[#080710]/95 backdrop-blur-xl px-4 pt-3 pb-6 space-y-2">
+      <a href="#showcase" class="mobile-nav-link block px-4 py-3 rounded-xl text-base font-semibold text-slate-200 hover:bg-purple-500/15">Showcase</a>
+      <a href="#creators" class="mobile-nav-link block px-4 py-3 rounded-xl text-base font-semibold text-slate-200 hover:bg-purple-500/15">AI Creators</a>
+      <a href="#script-studio" class="mobile-nav-link block px-4 py-3 rounded-xl text-base font-semibold text-slate-200 hover:bg-purple-500/15">Script Studio</a>
+      <a href="#pricing" class="mobile-nav-link block px-4 py-3 rounded-xl text-base font-semibold text-slate-200 hover:bg-purple-500/15">Pricing</a>
+      <div class="pt-2">
+        <button type="button" onclick="openOrderModal('quick')" class="w-full py-3.5 rounded-full text-center text-xs font-extrabold text-white bg-gradient-to-r from-[#8B2CF5] to-[#E838F5] shadow-neon cursor-pointer">
+          Order Now — $10 Quick Promo ⚡
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== 2. HERO SECTION + CIRCULAR LOGO EMBLEM + $10 QUICK PROMO ==================== -->
+  <section class="relative hero-radial-bg pt-12 pb-20 lg:pt-16 lg:pb-24 overflow-hidden">
+    <!-- Four-point Star Sparkles -->
+    <svg class="hidden lg:block absolute top-14 left-[7%] w-8 h-8 text-fuchsia-400 animate-sparkle pointer-events-none" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 0L14.2 9.8L24 12L14.2 14.2L12 24L9.8 14.2L0 12L9.8 9.8L12 0Z"/>
+    </svg>
+    <svg class="hidden lg:block absolute bottom-16 right-[46%] w-6 h-6 text-purple-300 animate-sparkle pointer-events-none" style="animation-delay: 1.4s;" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 0L14.2 9.8L24 12L14.2 14.2L12 24L9.8 14.2L0 12L9.8 9.8L12 0Z"/>
+    </svg>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+
+        <!-- Left 7 Columns: Official Brand Emblem Badge, Headline, Slogan Pill & Quick Promo Highlight -->
+        <div class="lg:col-span-7 text-center lg:text-left">
+          <div class="inline-flex items-center gap-2.5 px-5 py-2 rounded-full neon-pill-border mb-6">
+            <span class="w-2 h-2 rounded-full bg-fuchsia-400 animate-ping"></span>
+            <span class="text-xs font-extrabold italic tracking-wide text-white">
+              Real Stories. <span class="text-fuchsia-400">AI Creators.</span> Viral Results.
+            </span>
+          </div>
+
+          <h1 class="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl leading-[1.08] tracking-tight mb-5">
+            <span class="metallic-text block">Real Stories.</span>
+            <span class="ugc-gradient-text italic block">AI Creators. Viral Results.</span>
+          </h1>
+
+          <p class="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto lg:mx-0 leading-relaxed mb-7">
+            <span class="text-white font-bold">Your Brand, Our Creativity.</span> High-converting AI UGC ads engineered for TikTok, Instagram Reels &amp; Meta Ads—featuring lifelike AI creators, tested 3-second hooks, and dynamic captions starting at just <span class="text-fuchsia-400 font-extrabold">$10</span>.
+          </p>
+
+          <!-- Highlighted $10 Quick Promo Bar -->
+          <div class="rounded-3xl p-5 sm:p-6 bg-gradient-to-r from-[#1A1030] via-[#120C22] to-[#1D0F2E] border-2 border-fuchsia-500/80 shadow-neon-strong mb-8 max-w-2xl mx-auto lg:mx-0">
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div class="text-center sm:text-left">
+                <div class="inline-flex items-center gap-2 px-3 py-0.5 rounded-full bg-fuchsia-500/20 border border-fuchsia-500/40 text-[11px] font-extrabold uppercase tracking-wider text-fuchsia-300 mb-1.5">
+                  ⚡ $10 Quick Promo
+                </div>
+                <div class="font-display font-extrabold text-xl sm:text-2xl text-white">
+                  10-Second AI UGC Video — <span class="ugc-gradient-text">$10</span>
+                </div>
+                <p class="text-xs text-slate-300 mt-0.5">
+                  1 AI UGC Video • 10 Seconds • AI Avatar + Voiceover + Captions
+                </p>
+              </div>
+              <button type="button" onclick="openOrderModal('quick')" class="w-full sm:w-auto shrink-0 px-7 py-3.5 rounded-full font-extrabold text-sm text-white bg-gradient-to-r from-[#8B2CF5] via-[#E838F5] to-pink-600 hover:brightness-110 shadow-neon transition cursor-pointer">
+                Order $10 Video →
+              </button>
+            </div>
+          </div>
+
+          <!-- Primary CTA Buttons -->
+          <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 mb-9">
+            <button type="button" onclick="openOrderModal('growth')" class="w-full sm:w-auto px-8 py-4 rounded-full font-extrabold text-sm text-white bg-gradient-to-r from-[#8B2CF5] to-[#E838F5] hover:brightness-110 shadow-neon transition cursor-pointer">
+              Get Started Now
+            </button>
+            <a href="#showcase" class="w-full sm:w-auto px-8 py-4 rounded-full font-bold text-sm text-white glass-panel hover:bg-purple-950/40 transition flex items-center justify-center gap-2">
+              <span>▶ Watch 9:16 Showcase</span>
+            </a>
+          </div>
+
+          <!-- 3 Agency Pillars matching the circular logo bottom icons -->
+          <div class="grid grid-cols-3 divide-x divide-purple-500/30 rounded-2xl glass-panel py-4 px-2 max-w-lg mx-auto lg:mx-0">
+            <div class="px-3 text-center">
+              <div class="text-lg mb-0.5">🎬</div>
+              <div class="font-display font-extrabold text-xs sm:text-sm text-white">UGC Ads</div>
+              <div class="text-[10px] text-slate-400">46% 3s Hook Rate</div>
+            </div>
+            <div class="px-3 text-center">
+              <div class="text-lg mb-0.5">🤖</div>
+              <div class="font-display font-extrabold text-xs sm:text-sm ugc-gradient-text">AI Creators</div>
+              <div class="text-[10px] text-slate-400">Ultra-Realistic Voices</div>
+            </div>
+            <div class="px-3 text-center">
+              <div class="text-lg mb-0.5">📈</div>
+              <div class="font-display font-extrabold text-xs sm:text-sm text-white">Growth</div>
+              <div class="text-[10px] text-slate-400">4.2x Avg ROAS</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right 5 Columns: Full Circular SparkUGC™ Brand Emblem + Interactive Hero 9:16 Preview -->
+        <div class="lg:col-span-5 flex flex-col items-center">
+          <!-- Full Detailed Circular SparkUGC™ Emblem matching uploaded logo -->
+          <div class="relative w-72 h-72 sm:w-80 sm:h-80 animate-float">
+            <div class="absolute inset-3 rounded-full bg-gradient-to-tr from-[#8B2CF5]/40 via-[#E838F5]/35 to-pink-500/30 blur-2xl"></div>
+            <svg viewBox="0 0 400 400" class="relative w-full h-full drop-shadow-[0_0_28px_rgba(232,56,245,0.65)]" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="heroOuterRing" x1="30" y1="30" x2="370" y2="370" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="#E2E8F0"/>
+                  <stop offset="28%" stop-color="#E838F5"/>
+                  <stop offset="68%" stop-color="#8B2CF5"/>
+                  <stop offset="100%" stop-color="#FFFFFF"/>
+                </linearGradient>
+                <linearGradient id="heroSilverGrad" x1="100" y1="55" x2="290" y2="210" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="#FFFFFF"/>
+                  <stop offset="55%" stop-color="#E2E8F0"/>
+                  <stop offset="100%" stop-color="#94A3B8"/>
+                </linearGradient>
+                <linearGradient id="heroPurpleGrad" x1="115" y1="60" x2="300" y2="205" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="#8B2CF5"/>
+                  <stop offset="50%" stop-color="#E838F5"/>
+                  <stop offset="100%" stop-color="#9333EA"/>
+                </linearGradient>
+                <linearGradient id="heroSwooshGrad" x1="70" y1="185" x2="335" y2="75" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="#8B2CF5"/>
+                  <stop offset="52%" stop-color="#E838F5"/>
+                  <stop offset="100%" stop-color="#FFFFFF"/>
+                </linearGradient>
+              </defs>
+
+              <!-- Deep Obsidian Circle Base -->
+              <circle cx="200" cy="200" r="186" fill="#05040A" stroke="url(#heroOuterRing)" stroke-width="6"/>
+              <circle cx="200" cy="200" r="176" stroke="rgba(232,56,245,0.45)" stroke-width="1.5"/>
+
+              <!-- Upper Metallic & Purple S -->
+              <path d="M274 68C252 54 214 50 175 53C133 57 114 78 119 107C124 131 151 142 182 150V122C163 116 152 108 152 97C152 84 172 78 203 78C225 78 242 81 254 87L274 68Z" fill="url(#heroSilverGrad)"/>
+              <path d="M225 78C238 78 247 81 254 87L274 68C256 56 235 52 208 52L225 78Z" fill="url(#heroPurpleGrad)"/>
+
+              <!-- Lower Metallic & Purple S -->
+              <path d="M128 196C155 210 198 213 238 205C274 197 288 173 279 146C271 122 240 109 204 101V130C226 135 240 144 240 157C240 171 218 179 187 179C165 179 148 174 137 168L128 196Z" fill="url(#heroSilverGrad)"/>
+              <path d="M128 196L158 157C172 162 187 165 204 165L182 206C159 206 142 202 128 196Z" fill="url(#heroPurpleGrad)"/>
+
+              <!-- Center Play Triangle -->
+              <path d="M185 95L232 126L185 157V95Z" fill="url(#heroSilverGrad)"/>
+
+              <!-- Orbital Swoosh -->
+              <path d="M84 172C64 202 118 224 205 188C284 155 326 98 295 73C312 98 270 144 194 175C121 205 81 191 92 164L84 172Z" fill="url(#heroSwooshGrad)"/>
+
+              <!-- Four-Point Star Sparkles -->
+              <path d="M306 32L312 56L336 62L312 68L306 92L300 68L276 62L300 56L306 32Z" fill="#FFFFFF"/>
+              <path d="M76 196L80 212L96 216L80 220L76 236L72 220L56 216L72 212L76 196Z" fill="#E838F5"/>
+
+              <!-- SparkUGC™ Typography -->
+              <text x="200" y="254" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-weight="800" font-style="italic" font-size="48" letter-spacing="-1">
+                <tspan fill="#F8FAFC">Spark</tspan><tspan fill="url(#heroPurpleGrad)">UGC</tspan>
+              </text>
+              <text x="352" y="226" font-family="Inter, sans-serif" font-weight="700" font-size="11" fill="#E2E8F0">TM</text>
+
+              <!-- Subtitle with flanking lines -->
+              <line x1="48" y1="276" x2="88" y2="276" stroke="#94A3B8" stroke-width="1.5"/>
+              <text x="200" y="280" text-anchor="middle" font-family="Inter, sans-serif" font-weight="700" font-size="11" letter-spacing="3" fill="#E2E8F0">AI UGC ADS &amp; CREATIVE AGENCY</text>
+              <line x1="312" y1="276" x2="352" y2="276" stroke="#94A3B8" stroke-width="1.5"/>
+
+              <!-- Neon Slogan Pill -->
+              <rect x="54" y="294" width="292" height="30" rx="15" fill="#0B0914" stroke="#E838F5" stroke-width="2"/>
+              <text x="200" y="314" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-weight="700" font-style="italic" font-size="13.5">
+                <tspan fill="#FFFFFF">Real Stories. </tspan><tspan fill="#E838F5">AI Creators. </tspan><tspan fill="#FFFFFF">Viral Results.</tspan>
+              </text>
+
+              <!-- Bottom 3 Icons & Labels -->
+              <g transform="translate(105, 336)">
+                <rect x="6" y="4" width="20" height="14" rx="2" stroke="#FFFFFF" stroke-width="1.8"/>
+                <polygon points="14,8 20,11 14,14" fill="#FFFFFF"/>
+                <text x="16" y="32" text-anchor="middle" font-family="Inter, sans-serif" font-weight="600" font-size="10" fill="#E2E8F0">UGC Ads</text>
+              </g>
+              <line x1="156" y1="338" x2="156" y2="366" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+              <g transform="translate(184, 336)">
+                <rect x="7" y="4" width="18" height="16" rx="3" stroke="#FFFFFF" stroke-width="1.8"/>
+                <circle cx="16" cy="12" r="2.5" fill="#E838F5"/>
+                <text x="16" y="32" text-anchor="middle" font-family="Inter, sans-serif" font-weight="600" font-size="10" fill="#E2E8F0">AI Creators</text>
+              </g>
+              <line x1="244" y1="338" x2="244" y2="366" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+              <g transform="translate(263, 336)">
+                <rect x="6" y="13" width="3.5" height="6" fill="#FFFFFF"/>
+                <rect x="12" y="10" width="3.5" height="9" fill="#FFFFFF"/>
+                <rect x="18" y="6" width="3.5" height="13" fill="#FFFFFF"/>
+                <path d="M5 10L13 5L22 3" stroke="#E838F5" stroke-width="1.8" stroke-linecap="round"/>
+                <text x="16" y="32" text-anchor="middle" font-family="Inter, sans-serif" font-weight="600" font-size="10" fill="#E2E8F0">Growth</text>
+              </g>
+            </svg>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 3. INTERACTIVE 9:16 SAMPLE AI UGC SHOWCASE & STUDIO UPLOADER ==================== -->
+  <section id="showcase" class="py-20 lg:py-24 border-t border-purple-500/20 bg-[#080611] relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <span class="inline-block px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest text-fuchsia-300 bg-fuchsia-500/10 border border-fuchsia-500/30 mb-3">
+          9:16 Vertical Ad Showcase
+        </span>
+        <h2 class="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl metallic-text mb-4">
+          Viral AI UGC Ad Creatives
+        </h2>
+        <p class="text-slate-400 text-sm sm:text-base">
+          Preview how our AI creators deliver native, scroll-stopping 9:16 vertical ads—or load your own <code class="text-fuchsia-300">.mp4 / .mov</code> file to test it live in a mobile frame.
+        </p>
+      </div>
+
+      <!-- Live "+ Add / Preview Your Own Video" Uploader Bar -->
+      <div class="glass-panel rounded-3xl p-5 sm:p-6 mb-12 border border-fuchsia-500/35 shadow-neon">
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3 mb-4">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-[#8B2CF5] to-[#E838F5] flex items-center justify-center text-white font-extrabold shadow-neon shrink-0">
+              +
+            </div>
+            <div>
+              <h3 class="font-display font-extrabold text-base sm:text-lg text-white">
+                + Add / Preview Your Own Video
+              </h3>
+              <p class="text-xs text-slate-400">
+                Preview any local <span class="text-slate-200 font-semibold">.mp4, .mov, or .webm</span> creative in a 9:16 mobile mockup frame.
+              </p>
+            </div>
+          </div>
+          <span id="studio-upload-status" class="text-xs font-semibold text-purple-300">
+            Instant browser preview
+          </span>
+        </div>
+
+        <form id="custom-video-form" onsubmit="handleCustomVideoUpload(event)" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-3 items-end">
+          <div class="lg:col-span-4">
+            <label for="custom-video-file" class="block text-[11px] font-bold uppercase tracking-wider text-purple-300 mb-1.5">
+              1. Video File (.mp4 / .mov)
+            </label>
+            <input id="custom-video-file" type="file" accept="video/*" required class="w-full text-xs text-slate-300 file:mr-3 file:py-2.5 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-bold file:bg-[#8B2CF5] file:text-white hover:file:bg-[#E838F5] bg-[#05040A] border border-purple-500/35 rounded-xl p-1 cursor-pointer" />
+          </div>
+
+          <div class="lg:col-span-3">
+            <label for="custom-video-title" class="block text-[11px] font-bold uppercase tracking-wider text-purple-300 mb-1.5">
+              2. Brand / Product Label
+            </label>
+            <input id="custom-video-title" type="text" placeholder="e.g., Skincare Glow Serum" class="w-full px-3.5 py-2.5 rounded-xl bg-[#05040A] border border-purple-500/35 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-fuchsia-500" />
+          </div>
+
+          <div class="lg:col-span-3">
+            <label for="custom-video-hook" class="block text-[11px] font-bold uppercase tracking-wider text-purple-300 mb-1.5">
+              3. Custom Hook Badge
+            </label>
+            <input id="custom-video-hook" type="text" placeholder="e.g., 3s Hook: 48% Stop Rate" class="w-full px-3.5 py-2.5 rounded-xl bg-[#05040A] border border-purple-500/35 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-fuchsia-500" />
+          </div>
+
+          <div class="lg:col-span-2">
+            <button type="submit" class="w-full py-2.5 px-4 rounded-xl font-extrabold text-xs text-white bg-gradient-to-r from-[#8B2CF5] to-[#E838F5] hover:brightness-110 shadow-neon transition cursor-pointer">
+              + Preview 9:16
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- 9:16 Mobile Ad Showcase Grid -->
+      <div id="showcase-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Populated via JS -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== 4. AI CREATORS ROSTER ==================== -->
+  <section id="creators" class="py-20 lg:py-24 border-t border-purple-500/20 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+        <div>
+          <span class="inline-block px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest text-purple-300 bg-purple-500/10 border border-purple-500/30 mb-3">
+            Hyper-Realistic Digital Talent
+          </span>
+          <h2 class="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl metallic-text">
+            Meet Your AI Creators
+          </h2>
+        </div>
+
+        <!-- Category Filter Pills -->
+        <div class="flex flex-wrap gap-2" id="creator-filter-buttons">
+          <button type="button" onclick="filterCreators('All')" class="creator-filter-btn px-4 py-2 rounded-full text-xs font-extrabold bg-gradient-to-r from-[#8B2CF5] to-[#E838F5] text-white shadow-neon cursor-pointer" data-cat="All">All Creators</button>
+          <button type="button" onclick="filterCreators('Beauty & Skincare')" class="creator-filter-btn px-4 py-2 rounded-full text-xs font-bold glass-panel text-slate-300 hover:text-white cursor-pointer" data-cat="Beauty & Skincare">Beauty & Skincare</button>
+          <button type="button" onclick="filterCreators('Tech & SaaS')" class="creator-filter-btn px-4 py-2 rounded-full text-xs font-bold glass-panel text-slate-300 hover:text-white cursor-pointer" data-cat="Tech & SaaS">Tech & SaaS</button>
+          <button type="button" onclick="filterCreators('Fitness & Wellness')" class="creator-filter-btn px-4 py-2 rounded-full text-xs font-bold glass-panel text-slate-300 hover:text-white cursor-pointer" data-cat="Fitness & Wellness">Fitness & Wellness</button>
+        </div>
+      </div>
+
+      <div id="creators-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Populated via JS -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== 5. LIVE AI SCRIPT & HOOK STUDIO ==================== -->
+  <section id="script-studio" class="py-20 lg:py-24 border-t border-purple-500/20 bg-[#080611] relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <span class="inline-block px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest text-fuchsia-300 bg-fuchsia-500/10 border border-fuchsia-500/30 mb-3">
+          Interactive Creative Engine
+        </span>
+        <h2 class="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl metallic-text mb-4">
+          Live AI UGC Script &amp; Hook Studio
+        </h2>
+        <p class="text-slate-400 text-sm sm:text-base">
+          Test how SparkUGC™ engineers high-retention 3-part ad scripts (3s Hook + Value Proof + CTA) tailored to your product.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+        <!-- Left Input Controls -->
+        <div class="lg:col-span-5 glass-panel rounded-3xl p-6 sm:p-8 flex flex-col justify-between">
+          <div class="space-y-4">
+            <div>
+              <label for="script-product" class="block text-xs font-bold uppercase tracking-wider text-purple-300 mb-1.5">Product / Brand Name</label>
+              <input id="script-product" type="text" value="Lumina Peptide Glow Serum" class="w-full px-4 py-3 rounded-xl bg-[#05040A] border border-purple-500/35 text-sm text-white focus:outline-none focus:border-fuchsia-500" />
+            </div>
+
+            <div>
+              <label for="script-audience" class="block text-xs font-bold uppercase tracking-wider text-purple-300 mb-1.5">Target Audience</label>
+              <input id="script-audience" type="text" value="Busy women 24–40 wanting glass skin fast" class="w-full px-4 py-3 rounded-xl bg-[#05040A] border border-purple-500/35 text-sm text-white focus:outline-none focus:border-fuchsia-500" />
+            </div>
+
+            <div>
+              <label for="script-framework" class="block text-xs font-bold uppercase tracking-wider text-purple-300 mb-1.5">Viral Ad Framework</label>
+              <select id="script-framework" class="w-full px-4 py-3 rounded-xl bg-[#05040A] border border-purple-500/35 text-sm text-white focus:outline-none focus:border-fuchsia-500">
+                <option value="pas">Problem → Agitate → Solution (PAS)</option>
+                <option value="tiktok">TikTok "I Tried 5 Products" Review</option>
+                <option value="founder">3 Reasons Why Everyone Is Switching</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="script-creator" class="block text-xs font-bold uppercase tracking-wider text-purple-300 mb-1.5">AI Creator Persona</label>
+              <select id="script-creator" class="w-full px-4 py-3 rounded-xl bg-[#05040A] border border-purple-500/35 text-sm text-white focus:outline-none focus:border-fuchsia-500">
+                <option value="Maya Vance">Maya Vance (Warm &amp; Relatable)</option>
+                <option value="Liam Vance">Liam Vance (Energetic Tech Reviewer)</option>
+                <option value="Elena Rostova">Elena Rostova (Fitness &amp; Wellness Coach)</option>
+                <option value="Marcus Sterling">Marcus Sterling (Direct-Response Founder)</option>
+              </select>
+            </div>
+          </div>
+
+          <button type="button" onclick="generateUgcScript()" class="mt-6 w-full py-4 rounded-full font-extrabold text-sm text-white bg-gradient-to-r from-[#8B2CF5] via-[#E838F5] to-pink-600 hover:brightness-110 shadow-neon transition cursor-pointer">
+            ⚡ Generate Viral UGC Script
+          </button>
+        </div>
+
+        <!-- Right Generated Script Output -->
+        <div class="lg:col-span-7 rounded-3xl p-6 sm:p-8 bg-gradient-to-b from-[#170F2B] to-[#0B0915] border border-fuchsia-500/45 shadow-card-glow flex flex-col justify-between">
+          <div>
+            <div class="flex flex-wrap items-center justify-between gap-2 pb-4 mb-5 border-b border-white/10">
+              <div class="flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span id="script-meta-badge" class="text-xs font-extrabold uppercase tracking-wider text-fuchsia-300">
+                  AI Script Ready • Maya Vance
+                </span>
+              </div>
+              <span class="text-xs font-bold text-slate-400">Est. Length: 15–20s (9:16)</span>
+            </div>
+
+            <div id="generated-script-cards" class="space-y-4">
+              <!-- Populated via JS -->
+            </div>
+          </div>
+
+          <div class="mt-6 pt-5 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <span class="text-xs text-slate-400">Want our AI creators to film &amp; edit this script for you?</span>
+            <button type="button" onclick="orderWithGeneratedScript()" class="w-full sm:w-auto px-6 py-3 rounded-full font-extrabold text-xs text-white bg-gradient-to-r from-[#8B2CF5] to-[#E838F5] hover:brightness-110 shadow-neon transition cursor-pointer">
+              Produce This Video ($10+) →
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== 6. COMPLETE PRICING GRID & INTERACTIVE EXTRA SERVICES CALCULATOR ==================== -->
+  <section id="pricing" class="py-20 lg:py-24 border-t border-purple-500/20 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <span class="inline-block px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest text-purple-300 bg-purple-500/10 border border-purple-500/30 mb-3">
+          SPARKUGC™ – AI UGC Video Pricing
+        </span>
+        <h2 class="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl metallic-text mb-4">
+          Simple, High-ROI Video Packages
+        </h2>
+        <p class="text-slate-400 text-sm sm:text-base">
+          Select any package below or customize your order with Extra Services to calculate your exact total in real time.
+        </p>
+      </div>
+
+      <!-- Top 3 Packages: QUICK PROMO ($10), BASIC ($29), STARTER ($79) -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-7 mb-7">
+
+        <!-- QUICK PROMO – $10 -->
+        <div class="glass-panel rounded-3xl p-7 flex flex-col justify-between border-fuchsia-500/40">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs font-extrabold uppercase tracking-wider text-fuchsia-400">QUICK PROMO</span>
+              <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-fuchsia-500/15 text-fuchsia-300 border border-fuchsia-500/30">Intro Deal</span>
+            </div>
+            <div class="flex items-baseline gap-1.5 mb-4">
+              <span class="font-display font-extrabold text-4xl sm:text-5xl text-white">$10</span>
+              <span class="text-xs text-slate-400">/ 10 Seconds</span>
+            </div>
+            <ul class="space-y-3 text-sm text-slate-200 border-t border-white/10 pt-5 mb-7">
+              <li class="flex items-center gap-2"><span class="text-fuchsia-400 font-bold">✓</span> 1 AI UGC Video</li>
+              <li class="flex items-center gap-2"><span class="text-fuchsia-400 font-bold">✓</span> 10 Seconds</li>
+              <li class="flex items-center gap-2"><span class="text-fuchsia-400 font-bold">✓</span> AI Avatar + Voiceover</li>
+              <li class="flex items-center gap-2"><span class="text-fuchsia-400 font-bold">✓</span> Commercial Ad Rights</li>
+            </ul>
+          </div>
+          <button type="button" onclick="openOrderModal('quick')" class="w-full py-3.5 rounded-full font-extrabold text-sm text-white border border-fuchsia-500/70 hover:bg-fuchsia-600/25 transition cursor-pointer">
+            Order Quick Promo ($10)
+          </button>
+        </div>
+
+        <!-- BASIC – $29 -->
+        <div class="glass-panel rounded-3xl p-7 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs font-extrabold uppercase tracking-wider text-purple-300">BASIC</span>
+              <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-white/5 text-slate-300 border border-white/10">15 Seconds</span>
+            </div>
+            <div class="flex items-baseline gap-1.5 mb-4">
+              <span class="font-display font-extrabold text-4xl sm:text-5xl text-white">$29</span>
+              <span class="text-xs text-slate-400">/ 1 Video</span>
+            </div>
+            <ul class="space-y-3 text-sm text-slate-200 border-t border-white/10 pt-5 mb-7">
+              <li class="flex items-center gap-2"><span class="text-fuchsia-400 font-bold">✓</span> 1 AI UGC Video</li>
+              <li class="flex items-center gap-2"><span class="text-fuchsia-400 font-bold">✓</span> 15 Seconds</li>
+              <li class="flex items-center gap-2"><span class="text-fuchsia-400 font-bold">✓</span> AI Avatar + Voiceover</li>
+              <li class="flex items-center gap-2"><span class="text-fuchsia-400 font-bold">✓</span> Professional Editing</li>
+            </ul>
+          </div>
+          <button type="button" onclick="openOrderModal('basic')" class="w-full py-3.5 rounded-full font-bold text-sm text-white border border-purple-500/50 hover:bg-purple-600/25 transition cursor-pointer">
+            Select Basic ($29)
+          </button>
+        </div>
+
+        <!-- STARTER – $79 -->
+        <div class="glass-panel rounded-3xl p-7 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs font-extrabold uppercase tracking-wider text-purple-300">STARTER</span>
+              <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-purple-500/15 text-purple-200 border border-purple-500/30">3 Hooks</span>
+            </div>
+            <div class="flex items-baseline gap-1.5 mb-4">
+              <span class="font-display font-extrabold text-4xl sm:text-5xl text-white">$79</span>
+              <span class="text-xs text-slate-400">/ 3 Videos</span>
+            </div>
+            <ul class="space-y-3 text-sm text-slate-200 border-t border-white/10 pt-5 mb-7">
+              <li class="flex items-center gap-2"><span class="text-fuchsia-400 font-bold">✓</span> 3 AI UGC Videos</li>
+              <li class="flex items-center gap-2"><span class="text-fuchsia-400 font-bold">✓</span> 15–30 Seconds</li>
+              <li class="flex items-center gap-2"><span class="text-fuchsia-400 font-bold">✓</span> 3 Different Hooks</li>
+              <li class="flex items-center gap-2"><span class="text-fuchsia-400 font-bold">✓</span> Captions</li>
+            </ul>
+          </div>
+          <button type="button" onclick="openOrderModal('starter')" class="w-full py-3.5 rounded-full font-bold text-sm text-white border border-purple-500/50 hover:bg-purple-600/25 transition cursor-pointer">
+            Select Starter ($79)
+          </button>
+        </div>
+
+      </div>
+
+      <!-- Bottom 2 Packages: GROWTH ($129 - Most Popular) & PREMIUM ($229) -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-7 max-w-5xl mx-auto mb-16">
+
+        <!-- GROWTH – $129 (Most Popular) -->
+        <div class="relative rounded-3xl p-8 flex flex-col justify-between bg-gradient-to-b from-[#1B1130] via-[#110C20] to-[#0A0913] border-2 border-fuchsia-500 shadow-neon-strong">
+          <div class="absolute -top-3.5 right-6 px-4 py-1 rounded-full bg-gradient-to-r from-[#8B2CF5] to-[#E838F5] text-white text-[11px] font-extrabold uppercase tracking-wider shadow-neon">
+            ✦ Most Popular
+          </div>
+          <div>
+            <div class="text-xs font-extrabold uppercase tracking-wider text-fuchsia-400 mb-2">GROWTH</div>
+            <div class="flex items-baseline gap-2 mb-4">
+              <span class="font-display font-extrabold text-5xl metallic-text">$129</span>
+              <span class="text-xs text-slate-300">/ 5 AI UGC Videos</span>
+            </div>
+            <ul class="space-y-3 text-sm text-slate-100 border-t border-white/15 pt-5 mb-8">
+              <li class="flex items-center gap-2.5"><span class="text-fuchsia-400 font-bold">✓</span> <strong>5 AI UGC Videos</strong></li>
+              <li class="flex items-center gap-2.5"><span class="text-fuchsia-400 font-bold">✓</span> Different AI Creators</li>
+              <li class="flex items-center gap-2.5"><span class="text-fuchsia-400 font-bold">✓</span> Product Ads</li>
+              <li class="flex items-center gap-2.5"><span class="text-fuchsia-400 font-bold">✓</span> Professional Editing</li>
+            </ul>
+          </div>
+          <button type="button" onclick="openOrderModal('growth')" class="w-full py-4 rounded-full font-extrabold text-sm text-white bg-gradient-to-r from-[#8B2CF5] via-[#E838F5] to-pink-600 hover:brightness-110 shadow-neon transition cursor-pointer">
+            Select Growth ($129)
+          </button>
+        </div>
+
+        <!-- PREMIUM – $229 -->
+        <div class="glass-panel rounded-3xl p-8 flex flex-col justify-between border-purple-500/40">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-extrabold uppercase tracking-wider text-purple-300">PREMIUM</span>
+              <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-purple-500/20 text-purple-200 border border-purple-500/40">Priority Delivery</span>
+            </div>
+            <div class="flex items-baseline gap-2 mb-4">
+              <span class="font-display font-extrabold text-5xl text-white">$229</span>
+              <span class="text-xs text-slate-400">/ 10 AI UGC Videos</span>
+            </div>
+            <ul class="space-y-3 text-sm text-slate-200 border-t border-white/10 pt-5 mb-8">
+              <li class="flex items-center gap-2.5"><span class="text-fuchsia-400 font-bold">✓</span> <strong>10 AI UGC Videos</strong></li>
+              <li class="flex items-center gap-2.5"><span class="text-fuchsia-400 font-bold">✓</span> Multiple Ad Concepts</li>
+              <li class="flex items-center gap-2.5"><span class="text-fuchsia-400 font-bold">✓</span> Different Hooks</li>
+              <li class="flex items-center gap-2.5"><span class="text-fuchsia-400 font-bold">✓</span> Priority Delivery</li>
+            </ul>
+          </div>
+          <button type="button" onclick="openOrderModal('premium')" class="w-full py-4 rounded-full font-bold text-sm text-white border border-purple-500/60 hover:bg-purple-600/25 transition cursor-pointer">
+            Select Premium ($229)
+          </button>
+        </div>
+
+      </div>
+
+      <!-- Interactive Extra Services Calculator & Direct Order Panel -->
+      <div id="order-section" class="rounded-3xl p-6 sm:p-10 bg-gradient-to-b from-[#160F29] to-[#0A0814] border border-fuchsia-500/45 shadow-neon max-w-5xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+
+          <!-- Left 7 Cols: Plan + Extra Services Toggles + Brand Input -->
+          <div class="lg:col-span-7 space-y-6">
+            <div>
+              <span class="text-xs font-extrabold uppercase tracking-widest text-fuchsia-400">Custom Package Builder</span>
+              <h3 class="font-display font-extrabold text-2xl sm:text-3xl text-white mt-1">
+                Extra Services &amp; Instant Order
+              </h3>
+            </div>
+
+            <div>
+              <label for="calc-package-select" class="block text-xs font-bold uppercase tracking-wider text-purple-300 mb-2">Choose Base Plan</label>
+              <select id="calc-package-select" onchange="setSelectedPlan(this.value)" class="w-full px-4 py-3.5 rounded-2xl bg-[#05040A] border border-purple-500/45 text-sm font-bold text-white focus:outline-none focus:border-fuchsia-500">
+                <option value="quick">QUICK PROMO – $10 (1 AI UGC Video | 10 Seconds)</option>
+                <option value="basic">BASIC – $29 (1 AI UGC Video | 15 Seconds | AI Avatar + Voiceover | Professional Editing)</option>
+                <option value="starter">STARTER – $79 (3 AI UGC Videos | 15–30 Seconds | 3 Different Hooks | Captions)</option>
+                <option value="growth">GROWTH – $129 (5 AI UGC Videos | Different AI Creators | Product Ads | Professional Editing)</option>
+                <option value="premium">PREMIUM – $229 (10 AI UGC Videos | Multiple Ad Concepts | Different Hooks | Priority Delivery)</option>
+              </select>
+            </div>
+
+            <div>
+              <span class="block text-xs font-bold uppercase tracking-wider text-purple-300 mb-2.5">Extra Services Add-Ons</span>
+              <div id="inline-extras-container" class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <!-- Populated via JS -->
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label for="inline-brand" class="block text-xs font-bold uppercase tracking-wider text-purple-300 mb-1.5">Brand / Product Name</label>
+                <input id="inline-brand" type="text" oninput="syncOrderLinks()" placeholder="e.g., Lumina Skincare" class="w-full px-4 py-3 rounded-xl bg-[#05040A] border border-purple-500/35 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-fuchsia-500" />
+              </div>
+              <div>
+                <label for="inline-details" class="block text-xs font-bold uppercase tracking-wider text-purple-300 mb-1.5">Product Link / Notes</label>
+                <input id="inline-details" type="text" oninput="syncOrderLinks()" placeholder="https://yourstore.com or hook idea" class="w-full px-4 py-3 rounded-xl bg-[#05040A] border border-purple-500/35 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-fuchsia-500" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Right 5 Cols: Real-Time Total & Direct WhatsApp / Gmail Buttons ONLY -->
+          <div class="lg:col-span-5 rounded-3xl p-6 sm:p-7 bg-[#06050C] border border-purple-500/40 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between pb-4 mb-4 border-b border-white/10">
+                <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Estimated Total</span>
+                <span id="inline-total-display" class="font-display font-extrabold text-4xl sm:text-5xl ugc-gradient-text">$10</span>
+              </div>
+
+              <div id="inline-summary-list" class="space-y-2.5 text-sm text-slate-200 mb-7">
+                <!-- Populated via JS -->
+              </div>
+            </div>
+
+            <div class="space-y-3">
+              <a id="inline-wa-btn" href="https://wa.me/917367853074" target="_blank" rel="noopener noreferrer" class="w-full py-4 px-5 rounded-full font-extrabold text-sm text-white bg-gradient-to-r from-emerald-600 to-teal-600 hover:brightness-110 shadow-lg transition flex items-center justify-center gap-2">
+                <span>💬</span>
+                <span>Send Order via WhatsApp</span>
+              </a>
+
+              <a id="inline-gmail-btn" href="mailto:aniketkumar45445@gmail.com" class="w-full py-4 px-5 rounded-full font-extrabold text-sm text-white bg-gradient-to-r from-[#8B2CF5] via-[#E838F5] to-pink-600 hover:brightness-110 shadow-neon transition flex items-center justify-center gap-2">
+                <span>✉️</span>
+                <span>Send Order via Gmail</span>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== 7. FOOTER ==================== -->
+  <footer class="border-t border-purple-500/25 bg-[#040308] py-12 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="text-center md:text-left">
+          <div class="font-display font-extrabold italic text-2xl metallic-text">
+            Spark<span class="ugc-gradient-text">UGC</span><sup class="text-[10px] text-slate-400">TM</sup>
+          </div>
+          <p class="text-xs text-purple-300 font-semibold mt-1">
+            SPARKUGC – Your Brand, Our Creativity. | Real Stories. AI Creators. Viral Results.
+          </p>
+        </div>
+
+        <div class="flex flex-wrap items-center justify-center gap-3 text-xs font-semibold">
+          <a href="https://wa.me/917367853074" target="_blank" rel="noopener noreferrer" class="px-4 py-2.5 rounded-full glass-panel text-emerald-300 hover:text-white transition">
+            💬 WhatsApp: +91 7367853074
+          </a>
+          <a href="mailto:aniketkumar45445@gmail.com" class="px-4 py-2.5 rounded-full glass-panel text-fuchsia-300 hover:text-white transition">
+            ✉️ Email: aniketkumar45445@gmail.com
+          </a>
+        </div>
+      </div>
+
+      <div class="mt-8 pt-6 border-t border-white/10 text-center text-[11px] text-slate-500">
+        © 2026 SparkUGC™ — AI UGC Ads &amp; Creative Agency. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== DIRECT ORDER MODAL (WHATSAPP & GMAIL ONLY) ==================== -->
+  <div id="order-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+    <div class="relative w-full max-w-lg rounded-3xl p-6 sm:p-8 bg-gradient-to-b from-[#1B1230] to-[#090712] border-2 border-fuchsia-500/70 shadow-neon-strong max-h-[92vh] overflow-y-auto">
+      <button type="button" onclick="closeOrderModal()" aria-label="Close modal" class="absolute top-5 right-5 w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center font-bold cursor-pointer">
+        ✕
+      </button>
+
+      <span class="text-[11px] font-extrabold uppercase tracking-widest text-fuchsia-400">SparkUGC™ Instant Checkout</span>
+      <h3 class="font-display font-extrabold text-2xl text-white mt-1 mb-5">
+        Launch Your AI UGC Order
+      </h3>
+
+      <div class="space-y-4">
+        <div>
+          <label for="modal-plan-select" class="block text-xs font-bold uppercase tracking-wider text-purple-300 mb-1.5">Selected Package</label>
+          <select id="modal-plan-select" onchange="setSelectedPlan(this.value)" class="w-full px-4 py-3 rounded-xl bg-[#05040A] border border-purple-500/40 text-sm font-bold text-white focus:outline-none focus:border-fuchsia-500">
+            <option value="quick">QUICK PROMO – $10 (1 Video | 10 Seconds)</option>
+            <option value="basic">BASIC – $29 (1 Video | 15 Seconds)</option>
+            <option value="starter">STARTER – $79 (3 Videos | 15–30 Seconds)</option>
+            <option value="growth">GROWTH – $129 (5 Videos | Most Popular)</option>
+            <option value="premium">PREMIUM – $229 (10 Videos | Priority)</option>
+          </select>
+        </div>
+
+        <div>
+          <span class="block text-xs font-bold uppercase tracking-wider text-purple-300 mb-2">Extra Services</span>
+          <div id="modal-extras-container" class="space-y-2">
+            <!-- Populated via JS -->
+          </div>
+        </div>
+
+        <div>
+          <label for="modal-brand" class="block text-xs font-bold uppercase tracking-wider text-purple-300 mb-1.5">Brand / Product Name</label>
+          <input id="modal-brand" type="text" oninput="syncModalFromInputs()" placeholder="Enter your brand or product name" class="w-full px-4 py-3 rounded-xl bg-[#05040A] border border-purple-500/35 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-fuchsia-500" />
+        </div>
+
+        <div>
+          <label for="modal-details" class="block text-xs font-bold uppercase tracking-wider text-purple-300 mb-1.5">Product Website Link &amp; Notes</label>
+          <textarea id="modal-details" rows="2" oninput="syncModalFromInputs()" placeholder="Paste product link, target audience, or creator preference..." class="w-full px-4 py-3 rounded-xl bg-[#05040A] border border-purple-500/35 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-fuchsia-500"></textarea>
+        </div>
+
+        <div class="flex items-center justify-between p-4 rounded-2xl bg-black/60 border border-purple-500/30">
+          <span class="text-xs font-bold uppercase tracking-wider text-slate-300">Total Amount</span>
+          <span id="modal-total-display" class="font-display font-extrabold text-3xl ugc-gradient-text">$10</span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+          <a id="modal-wa-btn" href="https://wa.me/917367853074" target="_blank" rel="noopener noreferrer" class="py-3.5 px-4 rounded-full font-extrabold text-xs text-white bg-gradient-to-r from-emerald-600 to-teal-600 hover:brightness-110 shadow-lg transition flex items-center justify-center gap-2">
+            <span>💬</span>
+            <span>Order on WhatsApp</span>
+          </a>
+          <a id="modal-gmail-btn" href="mailto:aniketkumar45445@gmail.com" class="py-3.5 px-4 rounded-full font-extrabold text-xs text-white bg-gradient-to-r from-[#8B2CF5] to-[#E838F5] hover:brightness-110 shadow-neon transition flex items-center justify-center gap-2">
+            <span>✉️</span>
+            <span>Order on Gmail</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== VANILLA JAVASCRIPT ==================== -->
+  <script>
+    // 1. Mobile Navigation
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileMenuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+    document.querySelectorAll('.mobile-nav-link').forEach((link) => {
+      link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+    });
+
+    // 2. Interactive 9:16 Showcase + Local Video Uploader
+    const showcaseItems = [
+      {
+        id: 's1',
+        type: 'simulated',
+        title: 'Skincare Glow Serum',
+        plan: 'quick',
+        hookBadge: '3s Hook: 47.4% Stop Rate',
+        stats: '4.4x ROAS • 3.8% CTR',
+        creator: 'Maya Vance • AI Creator',
+        gradient: 'from-fuchsia-900/75 via-[#160B26] to-[#05040A]',
+        accent: '#E838F5',
+        captions: [
+          '"Stop spending $90 on serums that never absorb..."',
+          '"2 drops of Lumina Glow Serum hydrates in 4 seconds."',
+          '"Tap below for 25% off your starter bundle!"'
+        ],
+        playing: true,
+        muted: true,
+        progress: 22,
+        capIdx: 0
+      },
+      {
+        id: 's2',
+        type: 'simulated',
+        title: 'Tech Gadget Pro',
+        plan: 'basic',
+        hookBadge: '3s Hook: 44.8% Stop Rate',
+        stats: '3.9x ROAS • 3.4% CTR',
+        creator: 'Liam Vance • AI Creator',
+        gradient: 'from-purple-900/80 via-[#0E0B24] to-[#05040A]',
+        accent: '#8B2CF5',
+        captions: [
+          '"This pocket AI gadget replaces 4 bulky desk tools."',
+          '"Watch how fast it pairs and summarizes meetings."',
+          '"Grab Tech Gadget Pro before launch stock sells out!"'
+        ],
+        playing: true,
+        muted: true,
+        progress: 50,
+        capIdx: 1
+      },
+      {
+        id: 's3',
+        type: 'simulated',
+        title: 'FitPulse Hydration',
+        plan: 'starter',
+        hookBadge: '3s Hook: 49.1% Stop Rate',
+        stats: '4.6x ROAS • 4.1% CTR',
+        creator: 'Elena Rostova • AI Creator',
+        gradient: 'from-pink-900/75 via-[#180A1F] to-[#05040A]',
+        accent: '#EC4899',
+        captions: [
+          '"Why sugary sports drinks crash your energy at 2 PM..."',
+          '"FitPulse delivers clean electrolytes with zero sugar."',
+          '"Order your 10-stick trial pack today for 20% off!"'
+        ],
+        playing: true,
+        muted: true,
+        progress: 74,
+        capIdx: 0
+      },
+      {
+        id: 's4',
+        type: 'simulated',
+        title: 'SaaS & E-Com Scale',
+        plan: 'growth',
+        hookBadge: '3s Hook: 45.6% Stop Rate',
+        stats: '4.1x ROAS • 3.6% CTR',
+        creator: 'Marcus Sterling • AI Creator',
+        gradient: 'from-violet-900/80 via-[#100B26] to-[#05040A]',
+        accent: '#9333EA',
+        captions: [
+          '"How we cut our Meta Ads CPA by 41% in 7 days..."',
+          '"We tested 5 AI creator hooks instead of 1 static image."',
+          '"Launch your SparkUGC ad pack starting at $10!"'
+        ],
+        playing: true,
+        muted: true,
+        progress: 38,
+        capIdx: 2
+      }
+    ];
+
+    function escapeHtml(str) {
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    function renderShowcaseGrid() {
+      const grid = document.getElementById('showcase-grid');
+      grid.innerHTML = showcaseItems.map((item, idx) => {
+        if (item.type === 'uploaded') {
+          return `
+            <div class="flex flex-col">
+              <div class="relative rounded-[30px] p-2 bg-gradient-to-b from-fuchsia-600/65 via-purple-900/50 to-slate-800/60 shadow-neon">
+                <div class="relative rounded-[24px] overflow-hidden bg-[#05040A] aspect-[9/16] flex flex-col justify-between">
+                  <video id="vid-el-${item.id}" src="${item.videoUrl}" class="absolute inset-0 w-full h-full object-cover" autoplay muted loop playsinline></video>
+                  <div class="relative z-10 p-3.5 bg-gradient-to-b from-black/80 via-black/35 to-transparent">
+                    <div class="flex items-center justify-between gap-1 mb-2">
+                      <span class="px-2.5 py-0.5 rounded-full bg-fuchsia-600/85 text-[10px] font-extrabold text-white truncate max-w-[140px]">${escapeHtml(item.title)}</span>
+                      <span class="px-2 py-0.5 rounded-full bg-black/70 text-[10px] font-bold text-emerald-300 border border-emerald-400/30">${escapeHtml(item.duration)}</span>
+                    </div>
+                    <div class="inline-block px-2.5 py-1 rounded-lg bg-black/70 backdrop-blur-md border border-fuchsia-400/40 text-[10px] font-bold text-fuchsia-200">
+                      ⚡ ${escapeHtml(item.hookBadge)}
+                    </div>
+                  </div>
+                  <button type="button" onclick="toggleUploadedPlay('${item.id}')" class="relative z-10 my-auto mx-auto w-12 h-12 rounded-full bg-black/50 hover:bg-black/75 border border-white/25 flex items-center justify-center text-white text-sm transition cursor-pointer">
+                    <span id="play-icon-${item.id}">❚❚</span>
+                  </button>
+                  <div class="relative z-10 p-3.5 bg-gradient-to-t from-black/95 via-black/75 to-transparent">
+                    <div class="flex items-center justify-between mb-2">
+                      <span class="text-[11px] font-bold text-white truncate max-w-[145px]">${escapeHtml(item.creator)}</span>
+                      <button type="button" onclick="toggleUploadedMute('${item.id}')" id="mute-btn-${item.id}" class="px-2.5 py-1 rounded-full bg-white/15 hover:bg-white/25 text-[10px] font-bold text-white transition cursor-pointer">
+                        🔇 Unmute
+                      </button>
+                    </div>
+                    <div class="w-full h-1.5 rounded-full bg-white/20 overflow-hidden">
+                      <div id="prog-bar-${item.id}" class="h-full bg-gradient-to-r from-[#8B2CF5] to-[#E838F5] w-0 transition-all duration-150"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button type="button" onclick="openOrderModal('quick')" class="mt-3 w-full py-2.5 rounded-full text-xs font-extrabold text-white glass-panel hover:border-fuchsia-500 transition cursor-pointer">
+                Order Similar Ad ($10) →
+              </button>
+            </div>
+          `;
+        }
+
+        return `
+          <div class="flex flex-col">
+            <div class="relative rounded-[30px] p-2 bg-gradient-to-b from-slate-700/70 via-purple-900/50 to-fuchsia-900/50 shadow-card-glow hover:shadow-neon transition-all">
+              <div class="relative rounded-[24px] overflow-hidden bg-[#07060E] aspect-[9/16] flex flex-col justify-between border border-white/10">
+                <div class="absolute inset-0 bg-gradient-to-b ${item.gradient} video-sim-motion ${item.playing ? '' : 'video-sim-paused'}">
+                  <svg viewBox="0 0 260 460" class="w-full h-full object-cover opacity-90" fill="none">
+                    <circle cx="130" cy="160" r="88" stroke="${item.accent}" stroke-opacity="0.35" stroke-width="2" stroke-dasharray="6 6"/>
+                    <path d="M46 410C46 315 80 260 130 260C180 260 214 315 214 410H46Z" fill="#130E24" stroke="${item.accent}" stroke-opacity="0.35"/>
+                    <rect x="115" y="205" width="30" height="58" rx="14" fill="#E8B8A2"/>
+                    <circle cx="130" cy="150" r="42" fill="#F4CBB8"/>
+                    <path d="M88 142C90 105 112 94 134 96C156 98 172 114 172 142C162 122 146 114 130 115C112 116 98 126 88 142Z" fill="#181330"/>
+                    <circle cx="115" cy="148" r="4" fill="#181330"/>
+                    <circle cx="145" cy="148" r="4" fill="#181330"/>
+                    <path d="M120 174C125 180 135 180 140 174" stroke="#9F1239" stroke-width="3" stroke-linecap="round"/>
+                  </svg>
+                </div>
+
+                <div class="relative z-10 p-3.5 bg-gradient-to-b from-black/85 via-black/40 to-transparent">
+                  <div class="flex items-center justify-between gap-1 mb-1.5">
+                    <span class="px-2.5 py-0.5 rounded-full bg-white/15 backdrop-blur-md text-[10px] font-bold text-white truncate">${item.title}</span>
+                  </div>
+                  <div class="text-[10px] font-extrabold text-emerald-300 mb-2">📈 ${item.stats}</div>
+                  <div class="inline-block px-2.5 py-1 rounded-lg bg-black/75 backdrop-blur-md border border-fuchsia-500/40 text-[10px] font-extrabold text-fuchsia-300">
+                    ⚡ ${item.hookBadge}
+                  </div>
+                </div>
+
+                <div class="relative z-10 my-auto flex flex-col items-center gap-2">
+                  <button type="button" onclick="toggleSimPlay(${idx})" aria-label="Play or pause sample" class="w-12 h-12 rounded-full bg-black/55 hover:bg-fuchsia-600/80 backdrop-blur-md border border-white/25 flex items-center justify-center text-white text-sm shadow-lg transition cursor-pointer">
+                    <span>${item.playing ? '❚❚' : '▶'}</span>
+                  </button>
+                  <div class="flex items-end gap-1 h-4 px-2.5 py-1 rounded-full bg-black/55">
+                    <span class="w-1 bg-fuchsia-400 rounded-full ${item.playing && !item.muted ? 'animate-eq-1' : 'h-1.5'}"></span>
+                    <span class="w-1 bg-purple-400 rounded-full ${item.playing && !item.muted ? 'animate-eq-2' : 'h-2.5'}"></span>
+                    <span class="w-1 bg-pink-400 rounded-full ${item.playing && !item.muted ? 'animate-eq-3' : 'h-1.5'}"></span>
+                  </div>
+                </div>
+
+                <div class="relative z-10 p-3.5 bg-gradient-to-t from-black via-black/85 to-transparent">
+                  <div class="mb-2.5 text-center">
+                    <span id="sim-cap-${idx}" class="inline-block px-2.5 py-1 rounded-lg bg-fuchsia-600/90 text-white font-display font-extrabold text-[11px] leading-snug shadow">
+                      ${item.captions[item.capIdx]}
+                    </span>
+                  </div>
+                  <div class="flex items-center justify-between text-[10px] text-slate-300 mb-2">
+                    <span class="font-bold text-white truncate">${item.creator}</span>
+                    <button type="button" onclick="toggleSimMute(${idx})" class="px-2 py-0.5 rounded-full bg-white/15 hover:bg-white/25 text-white font-bold transition cursor-pointer">
+                      ${item.muted ? '🔇 Muted' : '🔊 Audio'}
+                    </button>
+                  </div>
+                  <div class="w-full h-1.5 rounded-full bg-white/20 overflow-hidden">
+                    <div id="sim-prog-${idx}" class="h-full bg-gradient-to-r from-[#8B2CF5] via-[#E838F5] to-pink-500 transition-all duration-300" style="width: ${item.progress}%"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <button type="button" onclick="openOrderModal('${item.plan}')" class="mt-3 w-full py-2.5 rounded-full text-xs font-extrabold text-white glass-panel hover:border-fuchsia-500 transition cursor-pointer">
+              Order Similar Ad →
+            </button>
+          </div>
+        `;
+      }).join('');
+
+      showcaseItems.forEach((item) => {
+        if (item.type === 'uploaded') {
+          const vidEl = document.getElementById(`vid-el-${item.id}`);
+          const progBar = document.getElementById(`prog-bar-${item.id}`);
+          if (vidEl && progBar) {
+            vidEl.addEventListener('timeupdate', () => {
+              if (vidEl.duration && !isNaN(vidEl.duration)) {
+                progBar.style.width = `${(vidEl.currentTime / vidEl.duration) * 100}%`;
+              }
+            });
+          }
+        }
+      });
+    }
+
+    setInterval(() => {
+      showcaseItems.forEach((item, idx) => {
+        if (item.type === 'simulated' && item.playing) {
+          item.progress = (item.progress + 6) % 100;
+          const progEl = document.getElementById(`sim-prog-${idx}`);
+          if (progEl) progEl.style.width = `${item.progress}%`;
+          if (item.progress < 7) {
+            item.capIdx = (item.capIdx + 1) % item.captions.length;
+            const capEl = document.getElementById(`sim-cap-${idx}`);
+            if (capEl) capEl.textContent = item.captions[item.capIdx];
+          }
+        }
+      });
+    }, 900);
+
+    function toggleSimPlay(idx) {
+      showcaseItems[idx].playing = !showcaseItems[idx].playing;
+      renderShowcaseGrid();
+    }
+
+    function toggleSimMute(idx) {
+      showcaseItems[idx].muted = !showcaseItems[idx].muted;
+      renderShowcaseGrid();
+    }
+
+    function toggleUploadedPlay(id) {
+      const vidEl = document.getElementById(`vid-el-${id}`);
+      const iconEl = document.getElementById(`play-icon-${id}`);
+      if (!vidEl) return;
+      if (vidEl.paused) {
+        vidEl.play().catch(() => {});
+        if (iconEl) iconEl.textContent = '❚❚';
+      } else {
+        vidEl.pause();
+        if (iconEl) iconEl.textContent = '▶';
+      }
+    }
+
+    function toggleUploadedMute(id) {
+      const vidEl = document.getElementById(`vid-el-${id}`);
+      const btnEl = document.getElementById(`mute-btn-${id}`);
+      if (!vidEl) return;
+      vidEl.muted = !vidEl.muted;
+      if (btnEl) btnEl.textContent = vidEl.muted ? '🔇 Unmute' : '🔊 Mute';
+    }
+
+    function handleCustomVideoUpload(event) {
+      event.preventDefault();
+      const statusEl = document.getElementById('studio-upload-status');
+      try {
+        const fileInput = document.getElementById('custom-video-file');
+        const titleInput = document.getElementById('custom-video-title');
+        const hookInput = document.getElementById('custom-video-hook');
+        if (!fileInput.files || fileInput.files.length === 0) return;
+
+        const file = fileInput.files[0];
+        const objectUrl = URL.createObjectURL(file);
+        const customTitle = titleInput.value.trim() || file.name.replace(/\.[^/.]+$/, '');
+        const customHook = hookInput.value.trim() || 'Custom Client Hook';
+        const newId = 'custom-' + Date.now();
+
+        const newItem = {
+          id: newId,
+          type: 'uploaded',
+          videoUrl: objectUrl,
+          title: customTitle,
+          hookBadge: customHook,
+          creator: 'Custom Studio Preview',
+          duration: '0:15'
+        };
+
+        const probe = document.createElement('video');
+        probe.preload = 'metadata';
+        probe.onloadedmetadata = () => {
+          if (probe.duration && isFinite(probe.duration)) {
+            const s = Math.round(probe.duration);
+            newItem.duration = `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`;
+            renderShowcaseGrid();
+          }
+        };
+        probe.src = objectUrl;
+
+        showcaseItems.unshift(newItem);
+        renderShowcaseGrid();
+        statusEl.textContent = `✓ Previewing "${customTitle}"`;
+        event.target.reset();
+      } catch (e) {
+        statusEl.textContent = 'Could not load video preview.';
+      }
+    }
+
+    // 3. AI Creators Roster
+    const aiCreators = [
+      {
+        name: 'Maya Vance',
+        niche: 'Beauty & Skincare',
+        accent: 'US Natural • Warm & Relatable',
+        hookSample: '"Okay, I finally tried the serum everyone on TikTok is talking about..."',
+        roas: '4.4x Avg ROAS'
+      },
+      {
+        name: 'Liam Vance',
+        niche: 'Tech & SaaS',
+        accent: 'US Crisp • Energetic Reviewer',
+        hookSample: '"If you still do this manually on your laptop, watch the next 10 seconds..."',
+        roas: '4.1x Avg ROAS'
+      },
+      {
+        name: 'Elena Rostova',
+        niche: 'Fitness & Wellness',
+        accent: 'UK Modern • Upbeat & Authentic',
+        hookSample: '"Three things changed my morning recovery routine—starting with this..."',
+        roas: '4.6x Avg ROAS'
+      },
+      {
+        name: 'Marcus Sterling',
+        niche: 'Tech & SaaS',
+        accent: 'US Founder • Direct-Response',
+        hookSample: '"We tested 40 ad creatives last quarter—this simple hook beat all of them..."',
+        roas: '4.3x Avg ROAS'
+      }
+    ];
+
+    let activeCreatorCat = 'All';
+    let previewingCreatorIdx = -1;
+
+    function filterCreators(category) {
+      activeCreatorCat = category;
+      document.querySelectorAll('.creator-filter-btn').forEach((btn) => {
+        if (btn.dataset.cat === category) {
+          btn.className = 'creator-filter-btn px-4 py-2 rounded-full text-xs font-extrabold bg-gradient-to-r from-[#8B2CF5] to-[#E838F5] text-white shadow-neon cursor-pointer';
+        } else {
+          btn.className = 'creator-filter-btn px-4 py-2 rounded-full text-xs font-bold glass-panel text-slate-300 hover:text-white cursor-pointer';
+        }
+      });
+      renderCreatorsGrid();
+    }
+
+    function toggleCreatorVoice(idx) {
+      previewingCreatorIdx = previewingCreatorIdx === idx ? -1 : idx;
+      renderCreatorsGrid();
+    }
+
+    function renderCreatorsGrid() {
+      const grid = document.getElementById('creators-grid');
+      const list = activeCreatorCat === 'All'
+        ? aiCreators
+        : aiCreators.filter((c) => c.niche === activeCreatorCat);
+
+      grid.innerHTML = list.map((creator, idx) => {
+        const isAuditioning = previewingCreatorIdx === idx;
+        return `
+          <div class="glass-panel rounded-3xl p-6 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="px-3 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-wider bg-fuchsia-500/15 text-fuchsia-300 border border-fuchsia-500/30">
+                  ${creator.niche}
+                </span>
+                <span class="text-[11px] font-bold text-emerald-400">${creator.roas}</span>
+              </div>
+
+              <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-[#8B2CF5] to-[#E838F5] flex items-center justify-center font-display font-extrabold text-2xl text-white shadow-neon mb-4">
+                ${creator.name.charAt(0)}
+              </div>
+
+              <h3 class="font-display font-extrabold text-xl text-white">${creator.name}</h3>
+              <p class="text-xs text-slate-400 mt-1 mb-4">${creator.accent}</p>
+
+              <div class="p-3.5 rounded-2xl bg-[#05040A] border border-purple-500/25 text-xs italic text-slate-300 mb-5">
+                ${creator.hookSample}
+              </div>
+            </div>
+
+            <div class="space-y-2">
+              <button type="button" onclick="toggleCreatorVoice(${idx})" class="w-full py-2.5 rounded-full text-xs font-bold border border-purple-500/45 text-purple-200 hover:text-white hover:bg-purple-600/20 transition flex items-center justify-center gap-2 cursor-pointer">
+                <span>${isAuditioning ? '❚❚ Playing Hook Sample...' : '🔊 Audition Hook Voice'}</span>
+              </button>
+              <button type="button" onclick="openOrderModal('quick', '${creator.name}')" class="w-full py-2.5 rounded-full text-xs font-extrabold text-white bg-gradient-to-r from-[#8B2CF5] to-[#E838F5] hover:brightness-110 transition cursor-pointer">
+                Book ${creator.name.split(' ')[0]} ($10+)
+              </button>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // 4. Live AI Script & Hook Studio
+    function generateUgcScript() {
+      const product = document.getElementById('script-product').value.trim() || 'Your Product';
+      const audience = document.getElementById('script-audience').value.trim() || 'modern shoppers';
+      const framework = document.getElementById('script-framework').value;
+      const creator = document.getElementById('script-creator').value;
+
+      document.getElementById('script-meta-badge').textContent = `AI Script Ready • ${creator}`;
+
+      let hook = '';
+      let body = '';
+      let cta = '';
+
+      if (framework === 'pas') {
+        hook = `"If you're part of ${audience} and tired of wasting money on solutions that don't deliver, stop scrolling for 5 seconds."`;
+        body = `"I switched to ${product} two weeks ago and the difference was immediate—zero hassle, fast results, and built specifically for ${audience}."`;
+        cta = `"Tap the link below to grab ${product} today before this batch sells out!"`;
+      } else if (framework === 'tiktok') {
+        hook = `"I tested the 5 most viral options for ${audience} so you don't have to—and ${product} won by a mile."`;
+        body = `"Look at how effortless ${product} is in real daily use. No complicated steps, just real, visible results from day one."`;
+        cta = `"Click Shop Now to claim your ${product} starter offer while it's still live!"`;
+      } else {
+        hook = `"3 reasons why ${audience} are switching to ${product} right now."`;
+        body = `"Number one: instant results. Number two: effortless daily routine. Number three: backed by real customer proof."`;
+        cta = `"Tap below to get your ${product} order started today!"`;
+      }
+
+      document.getElementById('generated-script-cards').innerHTML = `
+        <div class="p-4 rounded-2xl bg-[#05040A] border border-fuchsia-500/40">
+          <div class="text-[11px] font-extrabold uppercase tracking-wider text-fuchsia-400 mb-1">0:00 – 0:03 • Scroll-Stopping 3s Hook</div>
+          <p class="text-sm text-white font-medium leading-relaxed">${escapeHtml(hook)}</p>
+        </div>
+        <div class="p-4 rounded-2xl bg-[#05040A] border border-purple-500/35">
+          <div class="text-[11px] font-extrabold uppercase tracking-wider text-purple-300 mb-1">0:03 – 0:14 • Product Proof &amp; Value Story</div>
+          <p class="text-sm text-slate-200 leading-relaxed">${escapeHtml(body)}</p>
+        </div>
+        <div class="p-4 rounded-2xl bg-[#05040A] border border-emerald-500/35">
+          <div class="text-[11px] font-extrabold uppercase tracking-wider text-emerald-400 mb-1">0:14 – 0:20 • High-Converting Call To Action</div>
+          <p class="text-sm text-white font-semibold leading-relaxed">${escapeHtml(cta)}</p>
+        </div>
+      `;
+    }
+
+    function orderWithGeneratedScript() {
+      const product = document.getElementById('script-product').value.trim();
+      const creator = document.getElementById('script-creator').value;
+      openOrderModal('quick', creator, product);
+    }
+
+    // 5. Pricing Plans, Extra Services & Direct WhatsApp / Gmail Links (NO Copy Brief / Copy Verify)
+    const plansData = {
+      quick: { id: 'quick', name: 'QUICK PROMO', price: 10, desc: '1 AI UGC Video | 10 Seconds' },
+      basic: { id: 'basic', name: 'BASIC', price: 29, desc: '1 AI UGC Video | 15 Seconds | AI Avatar + Voiceover | Professional Editing' },
+      starter: { id: 'starter', name: 'STARTER', price: 79, desc: '3 AI UGC Videos | 15–30 Seconds | 3 Different Hooks | Captions' },
+      growth: { id: 'growth', name: 'GROWTH', price: 129, desc: '5 AI UGC Videos | Different AI Creators | Product Ads | Professional Editing' },
+      premium: { id: 'premium', name: 'PREMIUM', price: 229, desc: '10 AI UGC Videos | Multiple Ad Concepts | Different Hooks | Priority Delivery' }
+    };
+
+    const extraAddons = [
+      { id: 'extra10s', name: 'Extra 10 Seconds', price: 10, checked: false },
+      { id: 'extraRev', name: 'Extra Revision', price: 5, checked: false },
+      { id: 'extraHook', name: 'Extra Hook', price: 5, checked: false },
+      { id: 'rushDel', name: 'Rush Delivery', price: 15, checked: false },
+      { id: 'prodScript', name: 'Product Ad Script', price: 10, checked: false }
+    ];
+
+    let currentPlanId = 'quick';
+
+    function renderExtrasCheckboxes() {
+      const inlineContainer = document.getElementById('inline-extras-container');
+      const modalContainer = document.getElementById('modal-extras-container');
+
+      const buildHtml = (prefix) => extraAddons.map((addon, idx) => `
+        <label class="flex items-center justify-between gap-2 p-3 rounded-xl bg-[#05040A] border ${addon.checked ? 'border-fuchsia-500/60' : 'border-purple-500/25'} cursor-pointer transition">
+          <span class="flex items-center gap-2.5 text-xs font-bold text-white">
+            <input type="checkbox" ${addon.checked ? 'checked' : ''} onchange="toggleAddon(${idx}, this.checked)" class="w-4 h-4 accent-fuchsia-500 cursor-pointer" />
+            <span>${addon.name}</span>
+          </span>
+          <span class="text-xs font-extrabold text-fuchsia-300">+$${addon.price}</span>
+        </label>
+      `).join('');
+
+      if (inlineContainer) inlineContainer.innerHTML = buildHtml('inline');
+      if (modalContainer) modalContainer.innerHTML = buildHtml('modal');
+    }
+
+    function toggleAddon(idx, isChecked) {
+      extraAddons[idx].checked = isChecked;
+      renderExtrasCheckboxes();
+      syncOrderLinks();
+    }
+
+    function setSelectedPlan(planId) {
+      if (plansData[planId]) {
+        currentPlanId = planId;
+      }
+      const calcSelect = document.getElementById('calc-package-select');
+      const modalSelect = document.getElementById('modal-plan-select');
+      if (calcSelect) calcSelect.value = currentPlanId;
+      if (modalSelect) modalSelect.value = currentPlanId;
+      syncOrderLinks();
+    }
+
+    function syncOrderLinks() {
+      const plan = plansData[currentPlanId];
+      let total = plan.price;
+
+      const selectedExtras = [];
+      const summaryItemsHtml = [
+        `<div class="flex items-start justify-between gap-2">
+          <div>
+            <div class="font-extrabold text-white">${plan.name}</div>
+            <div class="text-xs text-slate-400">${plan.desc}</div>
+          </div>
+          <span class="font-extrabold text-white">$${plan.price}</span>
+        </div>`
+      ];
+
+      extraAddons.forEach((addon) => {
+        if (addon.checked) {
+          total += addon.price;
+          selectedExtras.push(`${addon.name} (+$${addon.price})`);
+          summaryItemsHtml.push(`
+            <div class="flex items-center justify-between text-xs text-fuchsia-300">
+              <span>+ ${addon.name}</span>
+              <span class="font-bold">+$${addon.price}</span>
+            </div>
+          `);
+        }
+      });
+
+      document.getElementById('inline-summary-list').innerHTML = summaryItemsHtml.join('');
+      document.getElementById('inline-total-display').textContent = `$${total}`;
+      document.getElementById('modal-total-display').textContent = `$${total}`;
+
+      const brand = (document.getElementById('modal-brand').value || document.getElementById('inline-brand').value || '').trim() || 'Not specified';
+      const details = (document.getElementById('modal-details').value || document.getElementById('inline-details').value || '').trim() || 'Not specified';
+
+      const orderMessage =
+`Hi SparkUGC™! I would like to place an AI UGC Video order:
+
+• Package: ${plan.name} ($${plan.price})
+• Included: ${plan.desc}
+• Extra Services: ${selectedExtras.length ? selectedExtras.join(', ') : 'None'}
+• Total Estimate: $${total}
+• Brand / Product: ${brand}
+• Link / Notes: ${details}`;
+
+      const encodedText = encodeURIComponent(orderMessage);
+      const encodedSubject = encodeURIComponent(`SparkUGC™ Order: ${plan.name} ($${total}) - ${brand}`);
+
+      const waHref = `https://wa.me/917367853074?text=${encodedText}`;
+      const gmailHref = `mailto:aniketkumar45445@gmail.com?subject=${encodedSubject}&body=${encodedText}`;
+
+      document.getElementById('inline-wa-btn').href = waHref;
+      document.getElementById('inline-gmail-btn').href = gmailHref;
+      document.getElementById('modal-wa-btn').href = waHref;
+      document.getElementById('modal-gmail-btn').href = gmailHref;
+    }
+
+    function syncModalFromInputs() {
+      document.getElementById('inline-brand').value = document.getElementById('modal-brand').value;
+      document.getElementById('inline-details').value = document.getElementById('modal-details').value;
+      syncOrderLinks();
+    }
+
+    function openOrderModal(planId, creatorName, productName) {
+      if (planId) setSelectedPlan(planId);
+      if (productName) {
+        document.getElementById('modal-brand').value = productName;
+        document.getElementById('inline-brand').value = productName;
+      }
+      if (creatorName) {
+        const noteText = `Preferred AI Creator: ${creatorName}`;
+        document.getElementById('modal-details').value = noteText;
+        document.getElementById('inline-details').value = noteText;
+      }
+      syncOrderLinks();
+      const modal = document.getElementById('order-modal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeOrderModal() {
+      const modal = document.getElementById('order-modal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      renderShowcaseGrid();
+      renderCreatorsGrid();
+      generateUgcScript();
+      renderExtrasCheckboxes();
+      syncOrderLinks();
+    });
+  </script>
+</body>
+</html>
